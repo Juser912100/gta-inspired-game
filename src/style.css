@@ -1,62 +1,88 @@
-* {
-  box-sizing: border-box;
-}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Photo Modifier</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="logo">PhotoForge</div>
 
-html, body {
-  margin: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  background: #0d1117;
-  color: #edf3fb;
-  font-family: Arial, Helvetica, sans-serif;
-}
+        <label class="upload-box" for="imageUpload">
+          <input id="imageUpload" type="file" accept="image/*" />
+          <span>Upload Image</span>
+        </label>
 
-body {
-  position: relative;
-}
+        <div class="preset-group">
+          <h3>Presets</h3>
+          <div class="preset-list">
+            <button class="preset active" data-preset="original">Original</button>
+            <button class="preset" data-preset="cinematic">Cinematic</button>
+            <button class="preset" data-preset="vintage">Vintage</button>
+            <button class="preset" data-preset="noir">Noir</button>
+            <button class="preset" data-preset="warm">Warm</button>
+            <button class="preset" data-preset="vivid">Vivid</button>
+          </div>
+        </div>
 
-canvas {
-  display: block;
-  width: 100vw;
-  height: 100vh;
-}
+        <div class="controls">
+          <div class="slider-row">
+            <label for="brightness">Brightness</label>
+            <span id="brightnessValue">100%</span>
+          </div>
+          <input id="brightness" type="range" min="0" max="200" value="100" />
 
-#hud {
-  position: fixed;
-  top: 18px;
-  left: 18px;
-  z-index: 20;
-  min-width: 260px;
-  padding: 12px 14px;
-  border-radius: 14px;
-  background: rgba(13, 17, 23, 0.75);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(8px);
-}
+          <div class="slider-row">
+            <label for="contrast">Contrast</label>
+            <span id="contrastValue">100%</span>
+          </div>
+          <input id="contrast" type="range" min="0" max="200" value="100" />
 
-.title {
-  margin-bottom: 8px;
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
-  color: #eccb6a;
-}
+          <div class="slider-row">
+            <label for="saturation">Saturation</label>
+            <span id="saturationValue">100%</span>
+          </div>
+          <input id="saturation" type="range" min="0" max="200" value="100" />
 
-.row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 3px 0;
-  font-size: 14px;
-}
+          <div class="slider-row">
+            <label for="sepia">Sepia</label>
+            <span id="sepiaValue">0%</span>
+          </div>
+          <input id="sepia" type="range" min="0" max="100" value="0" />
 
-.hint {
-  margin-top: 8px;
-  font-size: 11px;
-  line-height: 1.5;
-  opacity: 0.8;
-}
+          <div class="slider-row">
+            <label for="grayscale">Grayscale</label>
+            <span id="grayscaleValue">0%</span>
+          </div>
+          <input id="grayscale" type="range" min="0" max="100" value="0" />
+
+          <div class="slider-row">
+            <label for="blur">Blur</label>
+            <span id="blurValue">0px</span>
+          </div>
+          <input id="blur" type="range" min="0" max="8" value="0" />
+        </div>
+
+        <div class="action-row">
+          <button id="resetBtn" class="secondary">Reset</button>
+          <button id="downloadBtn" class="primary">Download</button>
+        </div>
+      </aside>
+
+      <main class="workspace">
+        <div class="canvas-frame">
+          <canvas id="editorCanvas" width="1200" height="800"></canvas>
+          <div id="emptyState" class="empty-state">
+            <h2>Upload a photo to begin</h2>
+            <p>Enhance, stylize, and download your image for free.</p>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

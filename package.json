@@ -1,5 +1,5 @@
 {
-  "name": "gta-inspired-game",
+  "name": "ai-photo-modifier",
   "private": true,
   "version": "1.0.0",
   "type": "module",
@@ -8,10 +8,7 @@
     "build": "vite build",
     "preview": "vite preview --host"
   },
-  "dependencies": {
-    "three": "^0.166.1"
-  },
   "devDependencies": {
-    "vite": "^5.4.8"
+    "vite": "^5.4.10"
   }
 }
